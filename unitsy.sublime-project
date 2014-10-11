@@ -1,0 +1,15 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": ".",
+            "folder_exclude_patterns": ["unity-project"]
+		},
+        {
+            "name": "Source",
+            "path": "unity-project/Assets",
+            "file_exclude_patterns": ["*.meta"]
+        }
+	]
+}
