@@ -1,3 +1,5 @@
 .DS_Store
 *.meta
+Temp/
+Library/
 unitsy.sublime-workspace
