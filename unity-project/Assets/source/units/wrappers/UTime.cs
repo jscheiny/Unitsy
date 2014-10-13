@@ -21,7 +21,7 @@ public static class UTime {
     public static ufloat fixedDeltaTime {
         get { return Time.fixedDeltaTime * SI.Second; }
         set {
-            if (value.unit != Dimensions.Time)
+            if (value.unit != Units.Time)
                 ThrowException();
             Time.fixedDeltaTime = value.scalar;
         }
@@ -34,7 +34,7 @@ public static class UTime {
     public static ufloat maximumDeltaTime {
         get { return Time.maximumDeltaTime * SI.Second; }
         set {
-            if (value.unit != Dimensions.Time)
+            if (value.unit != Units.Time)
                 ThrowException();
             Time.maximumDeltaTime = value.scalar;
         }

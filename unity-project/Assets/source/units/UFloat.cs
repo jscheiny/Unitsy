@@ -1,6 +1,6 @@
 using System;
 
-public struct ufloat : IComparable<ufloat> {
+public struct ufloat : IComparable<ufloat>, HasUnit {
 
     private readonly float scalar_;
     private readonly Unit unit_;

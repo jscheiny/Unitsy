@@ -1,16 +1,16 @@
 public class SI {
     // Distance
-    public static readonly ufloat Meter = 1 * Dimensions.Distance;
+    public static readonly ufloat Meter = 1 * Units.Distance;
     public static readonly ufloat Kilometer = 1000 * Meter;
     public static readonly ufloat Centimeter = Meter / 100;
     public static readonly ufloat Millimeter = Centimeter / 10;
 
     // Mass
-    public static readonly ufloat Kilogram = 1 * Dimensions.Mass;
+    public static readonly ufloat Kilogram = 1 * Units.Mass;
     public static readonly ufloat Gram = Kilogram / 1000;
 
     // Time
-    public static readonly ufloat Second = 1 * Dimensions.Time;
+    public static readonly ufloat Second = 1 * Units.Time;
     public static readonly ufloat Minute = 60 * Second;
     public static readonly ufloat Hour = 60 * Minute;
     public static readonly ufloat Day = 24 * Hour;

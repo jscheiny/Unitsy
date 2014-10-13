@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UVector3 {
+public class UVector3 : HasUnit {
 
     private readonly Unit unit_;
     private Vector3 vector_;
@@ -20,6 +20,12 @@ public class UVector3 {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public void Assign(UVector3 vector) {
+        if (unit_ != vector.unit_)
+            ThrowMismatchedUnitsException();
+        vector_ = vector.vector_;
     }
 
     public void Set(ufloat x, ufloat y, ufloat z) {
@@ -86,6 +92,10 @@ public class UVector3 {
         get {
             return new UVector3(vector_.normalized, unit_);
         }
+    }
+
+    public Vector3 vector {
+        get { return vector_; }
     }
 
     public ufloat this[int index] {
@@ -256,7 +266,7 @@ public class UVector3 {
                                ref UVector3 currentVelocity,
                                ufloat smoothTime) {
         return SmoothDamp(current, target, ref currentVelocity, smoothTime,
-                          new ufloat(Mathf.Infinity, current.unit_ / Dimensions.Time));
+                          new ufloat(Mathf.Infinity, current.unit_ / Units.Time));
     }
 
     static UVector3 SmoothDamp(UVector3 current,
@@ -276,13 +286,13 @@ public class UVector3 {
                                ufloat deltaTime) {
         if (current.unit_ != target.unit_)
             ThrowMismatchedUnitsException();
-        if (currentVelocity.unit_ != current.unit_ / Dimensions.Time)
+        if (currentVelocity.unit_ != current.unit_ / Units.Time)
             ThrowMismatchedUnitsException();
-        if (smoothTime.unit != Dimensions.Time)
+        if (smoothTime.unit != Units.Time)
             throw new UnitException("Smooth time must have a time unit.");
-        if (maxSpeed.unit != current.unit_ / Dimensions.Time)
+        if (maxSpeed.unit != current.unit_ / Units.Time)
             throw new UnitException("Max speed unit must be a velocity of the current vector.");
-        if (deltaTime.unit != Dimensions.Time)
+        if (deltaTime.unit != Units.Time)
             throw new UnitException("Delta time must have a time unit.");
         return new UVector3(Vector3.SmoothDamp(current.vector_, target.vector_, ref currentVelocity.vector_,
                                                smoothTime.scalar, maxSpeed.scalar, deltaTime.scalar),
